@@ -11,5 +11,7 @@ figma.ui.onmessage = pluginMessage => {
     }else{
         console.log("light")
     }
+    //at 26:46 on part 4
+    // add back in when done developing
     // figma.closePlugin();
 }
