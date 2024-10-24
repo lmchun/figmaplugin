@@ -2106,7 +2106,7 @@
   </div>
 
   <div class="switch">
-    <input id="dark-mode-on" class="switch__toggle" type="checkbox" />
+    <input class="switch__toggle" type="checkbox" id="dark-mode-on" />
     <label class="switch__label" for="dark-mode-on">Dark mode</label>
   </div>
   <div class="radio">
@@ -2114,7 +2114,7 @@
       id="radioButton1"
       type="radio"
       class="radio__button"
-      value="Value"
+      value="1"
       name="variantGroup"
     />
     <label for="radioButton1" class="radio__label">No Image</label>
@@ -2123,7 +2123,7 @@
       id="radioButton2"
       type="radio"
       class="radio__button"
-      value="Value"
+      value="2"
       name="variantGroup"
       checked
     />
@@ -2133,7 +2133,7 @@
       id="radioButton3"
       type="radio"
       class="radio__button"
-      value="Value"
+      value="3"
       name="variantGroup"
     />
     <label for="radioButton3" class="radio__label">Carousel</label>
@@ -2148,15 +2148,21 @@
     const name = document.getElementById("name").value;
     const username = document.getElementById("username").value;
     const description = document.getElementById("description").value;
+    const darkModeState = document.getElementById("dark-mode-on").checked;
+    const imageVariant = document.querySelector(
+      'input[name="variantGroup"]:checked'
+    ).value;
 
-    console.log("building my first plug-in");
-    console.log(
-      "hello " +
-        name +
-        " your username is " +
-        username +
-        " your post will say " +
-        description
-    );
+    // console.log("building my first plug-in");
+    // console.log(
+    //   "hello " +
+    //     name +
+    //     " your username is " +
+    //     username +
+    //     " your post will say " +
+    //     description
+    // );
+    console.log(imageVariant);
+    console.log(darkModeState);
   };
 </script>
