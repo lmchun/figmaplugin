@@ -2,6 +2,13 @@
   input {
     display: block;
   }
+
+  body {
+    padding: 2em !important;
+  }
+  div {
+    margin: 1em !important;
+  }
   /* Vars */
   :root {
     /* COLORS */
@@ -2068,54 +2075,88 @@
     display: inline-block;
   }
 </style>
+<body>
+  <h1>Petma plugin</h1>
 
-<h1>Petma plugin</h1>
+  <div>
+    <label for="username">Username</label>
+    <input
+      class="input__field"
+      type="text"
+      value="Your Petma username"
+      id="username"
+    />
 
-<div>
-  <label for="username">Username</label>
-  <input class="input__field" type="text" />
+    <label for="name">Name</label>
+    <input
+      class="input__field"
+      type="text"
+      value="Your Petma display name"
+      id="name"
+    />
 
-  <label for="name">Name</label>
-  <input class="input__field" type="text" />
+    <label for="Description">Description</label>
+    <input
+      class="textarea"
+      type="textarea"
+      rows="2"
+      value="your post goes here"
+      id="description"
+    />
+  </div>
 
-  <label for="Description">Description</label>
-  <input class="textarea" type="textarea" rows="2" />
-</div>
+  <div class="switch">
+    <input id="dark-mode-on" class="switch__toggle" type="checkbox" />
+    <label class="switch__label" for="dark-mode-on">Dark mode</label>
+  </div>
+  <div class="radio">
+    <input
+      id="radioButton1"
+      type="radio"
+      class="radio__button"
+      value="Value"
+      name="variantGroup"
+    />
+    <label for="radioButton1" class="radio__label">No Image</label>
 
-<div class="switch">
-  <input id="dark-mode-on" class="switch__toggle" type="checkbox" />
-  <label class="switch__label" for="dark-mode-on">Dark mode</label>
-</div>
-<div class="radio">
-  <input
-    id="radioButton1"
-    type="radio"
-    class="radio__button"
-    value="Value"
-    name="variantGroup"
-  />
-  <label for="radioButton1" class="radio__label">No Image</label>
+    <input
+      id="radioButton2"
+      type="radio"
+      class="radio__button"
+      value="Value"
+      name="variantGroup"
+      checked
+    />
+    <label for="radioButton2" class="radio__label">Single Image</label>
 
-  <input
-    id="radioButton2"
-    type="radio"
-    class="radio__button"
-    value="Value"
-    name="variantGroup"
-    checked
-  />
-  <label for="radioButton2" class="radio__label">Single Image</label>
+    <input
+      id="radioButton3"
+      type="radio"
+      class="radio__button"
+      value="Value"
+      name="variantGroup"
+    />
+    <label for="radioButton3" class="radio__label">Carousel</label>
+  </div>
 
-  <input
-    id="radioButton3"
-    type="radio"
-    class="radio__button"
-    value="Value"
-    name="variantGroup"
-  />
-  <label for="radioButton3" class="radio__label">Carousel</label>
-</div>
+  <div class="">
+    <button class="button button--primary" id="submit-post">Submit</button>
+  </div>
+</body>
+<script>
+  document.getElementById("submit-post").onclick = () => {
+    const name = document.getElementById("name").value;
+    const username = document.getElementById("username").value;
+    const description = document.getElementById("description").value;
 
-<div class="">
-  <button class="button button--primary" id="submit-post">Submit</button>
-</div>
+    console.log("building my first plug-in");
+    console.log(
+      "hello " +
+        name +
+        " your username is " +
+        username +
+        " your post will say " +
+        description
+    );
+  };
+</script>
