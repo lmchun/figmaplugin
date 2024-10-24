@@ -2152,17 +2152,17 @@
     const imageVariant = document.querySelector(
       'input[name="variantGroup"]:checked'
     ).value;
-
-    // console.log("building my first plug-in");
-    // console.log(
-    //   "hello " +
-    //     name +
-    //     " your username is " +
-    //     username +
-    //     " your post will say " +
-    //     description
-    // );
-    console.log(imageVariant);
-    console.log(darkModeState);
+    parent.postMessage(
+      {
+        pluginMessage: {
+          name,
+          username,
+          description,
+          darkModeState,
+          imageVariant,
+        },
+      },
+      "*"
+    );
   };
 </script>
