@@ -6,22 +6,33 @@ figma.ui.onmessage = pluginMessage => {
     const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post");
     const defaultVariant = postComponentSet.defaultVariant;
     const defaultDark = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=none, Dark mode=true");
-    // this needs to exactly match the component on the file for both of these
-    // defaultVariant.createInstance();
-    // console.log(postComponentSet);
-    // console.log(postComponentSet.children);
-    // console.log(postComponentSet.name);
-    // console.log(pluginMessage.name)
+    const defaultDark2 = postComponentSet.findOne(node => node.type == "COMPONENT" && node.name == "Image=single, Dark mode=true");
+    console.log(pluginMessage.imageVariant);
     // figma.createRectangle();
     if (pluginMessage.darkModeState === true) {
-        // console.log("dark")
-        defaultDark.createInstance();
+        switch (pluginMessage.imageVariant) {
+            case "2":
+                defaultDark2.createInstance();
+                break;
+            case "3":
+                break;
+            default:
+                defaultDark.createInstance();
+                break;
+        }
     }
     else {
-        // console.log("light")
-        defaultVariant.createInstance();
+        switch (pluginMessage.imageVariant) {
+            case "2":
+                break;
+            case "3":
+                break;
+            default:
+                defaultVariant.createInstance();
+                break;
+        }
+        // defaultVariant.createInstance();
     }
-    //at 26:46 on part 4
     // add back in when done developing
     // figma.closePlugin();
 };
