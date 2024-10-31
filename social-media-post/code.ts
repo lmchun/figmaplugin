@@ -11,8 +11,16 @@ figma.ui.onmessage = async pluginMessage => {
     
     let selectedVariant;
 
-    console.log(pluginMessage.imageVariant);
-
+    const currentDate: Date = new Date();
+    const year: number = currentDate.getFullYear();
+    // const month: number = currentDate.getMonth() + 1; 
+    const monthIndex: number = currentDate.getMonth();
+    const monthNames: string[] = [
+        "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const day: number = currentDate.getDate();
+    const month: string = monthNames[monthIndex];
 
 
     // figma.createRectangle();
@@ -46,12 +54,18 @@ figma.ui.onmessage = async pluginMessage => {
     const templateName = newPost.findOne(node => node.name == "displayName" && node.type == "TEXT") as TextNode;
     const templateUsername = newPost.findOne(node => node.name == "@username" && node.type == "TEXT") as TextNode;
     const templateDescription = newPost.findOne(node => node.name == "description" && node.type == "TEXT") as TextNode;
-
+    const templateDate = newPost.findOne(node => node.name == "datestamp" && node.type == "TEXT") as TextNode;
+    
     templateName.characters = pluginMessage.name;
     templateUsername.characters = pluginMessage.username;
     templateDescription.characters = pluginMessage.description;
+    templateDate.characters = month + " "+ day+ ", " + year;
 
     console.log(templateName + " aka " + templateUsername + " said" +templateDescription )
+
+    
+    // console.log(`Current Date: ${year}-${month}-${day}`);
+
 
     // add back in when done developing
     // figma.closePlugin();

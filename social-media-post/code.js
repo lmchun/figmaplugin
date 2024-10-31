@@ -15,7 +15,16 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     yield figma.loadFontAsync({ family: "Rubik", style: "Regular" });
     const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post");
     let selectedVariant;
-    console.log(pluginMessage.imageVariant);
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    // const month: number = currentDate.getMonth() + 1; 
+    const monthIndex = currentDate.getMonth();
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const day = currentDate.getDate();
+    const month = monthNames[monthIndex];
     // figma.createRectangle();
     if (pluginMessage.darkModeState === true) {
         switch (pluginMessage.imageVariant) {
@@ -47,10 +56,13 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const templateName = newPost.findOne(node => node.name == "displayName" && node.type == "TEXT");
     const templateUsername = newPost.findOne(node => node.name == "@username" && node.type == "TEXT");
     const templateDescription = newPost.findOne(node => node.name == "description" && node.type == "TEXT");
+    const templateDate = newPost.findOne(node => node.name == "datestamp" && node.type == "TEXT");
     templateName.characters = pluginMessage.name;
     templateUsername.characters = pluginMessage.username;
     templateDescription.characters = pluginMessage.description;
+    templateDate.characters = month + " " + day + ", " + year;
     console.log(templateName + " aka " + templateUsername + " said" + templateDescription);
+    // console.log(`Current Date: ${year}-${month}-${day}`);
     // add back in when done developing
     // figma.closePlugin();
 });
