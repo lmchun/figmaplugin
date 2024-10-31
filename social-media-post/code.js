@@ -13,6 +13,7 @@ figma.showUI(__html__);
 figma.ui.resize(500, 500);
 figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, function* () {
     yield figma.loadFontAsync({ family: "Rubik", style: "Regular" });
+    const nodes = [];
     const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post");
     let selectedVariant;
     const currentDate = new Date();
@@ -56,13 +57,19 @@ figma.ui.onmessage = (pluginMessage) => __awaiter(void 0, void 0, void 0, functi
     const templateName = newPost.findOne(node => node.name == "displayName" && node.type == "TEXT");
     const templateUsername = newPost.findOne(node => node.name == "@username" && node.type == "TEXT");
     const templateDescription = newPost.findOne(node => node.name == "description" && node.type == "TEXT");
+    const numLikes = newPost.findOne(node => node.name === "likesLabel" && node.type === "TEXT");
+    const numComments = newPost.findOne(node => node.name === "commentsLabel" && node.type === "TEXT");
     const templateDate = newPost.findOne(node => node.name == "datestamp" && node.type == "TEXT");
     templateName.characters = pluginMessage.name;
     templateUsername.characters = pluginMessage.username;
     templateDescription.characters = pluginMessage.description;
+    numLikes.characters = (Math.floor(Math.random() * 1000) + 1).toString();
+    numComments.characters = (Math.floor(Math.random() * 1000) + 1).toString();
     templateDate.characters = month + " " + day + ", " + year;
-    console.log(templateName + " aka " + templateUsername + " said" + templateDescription);
+    // console.log(templateName + " aka " + templateUsername + " said" +templateDescription )
+    nodes.push(newPost);
     // console.log(`Current Date: ${year}-${month}-${day}`);
+    figma.viewport.scrollAndZoomIntoView(nodes);
     // add back in when done developing
     // figma.closePlugin();
 });
