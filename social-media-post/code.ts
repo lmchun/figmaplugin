@@ -7,7 +7,7 @@ figma.ui.onmessage = async pluginMessage => {
 
     await figma.loadFontAsync({ family: "Rubik", style: "Regular" }); 
 
-    const nodes:SceneNode[] = [];
+    // const nodes:SceneNode[] = [];
 
     const postComponentSet = figma.root.findOne(node => node.type == "COMPONENT_SET" && node.name == "post") as ComponentSetNode;
     
@@ -68,13 +68,11 @@ figma.ui.onmessage = async pluginMessage => {
 
     templateDate.characters = month + " "+ day+ ", " + year;
 
-    // console.log(templateName + " aka " + templateUsername + " said" +templateDescription )
-    nodes.push(newPost);
+    // nodes.push(newPost);
     
-    // console.log(`Current Date: ${year}-${month}-${day}`);
 
-    figma.viewport.scrollAndZoomIntoView(nodes);
+    // figma.viewport.scrollAndZoomIntoView(nodes);
     
     // add back in when done developing
-    // figma.closePlugin();
+    figma.closePlugin();
 }
