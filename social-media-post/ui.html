@@ -2083,16 +2083,20 @@
     <input
       class="input__field"
       type="text"
-      value="Your Petma username"
+      value="username"
       id="username"
+      onfocus="if (this.value === 'username') { this.value = ''; }"
+      onblur="if (this.value === '') { this.value = 'username'; }"
     />
 
     <label for="name">Name</label>
     <input
       class="input__field"
       type="text"
-      value="Your Petma display name"
+      value="name"
       id="name"
+      onfocus="if (this.value === 'name') { this.value = ''; }"
+      onblur="if (this.value === '') { this.value = 'name'; }"
     />
 
     <label for="Description">Description</label>
@@ -2100,8 +2104,10 @@
       class="textarea"
       type="textarea"
       rows="2"
-      value="your post goes here"
+      value="Write your post..."
       id="description"
+      onfocus="if (this.value === 'Write your post...') { this.value = ''; }"
+      onblur="if (this.value === '') { this.value = 'Write your post...'; }"
     />
   </div>
 
